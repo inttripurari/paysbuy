@@ -59,8 +59,8 @@ class Paysbuy
     end
 
     {status: status, response: prepare_response_for_serialize(ws_return)}
-  rescue
-    raise Paysbuy::HttpError
+  # rescue
+  #   raise Paysbuy::HttpError
   end
 
   private
