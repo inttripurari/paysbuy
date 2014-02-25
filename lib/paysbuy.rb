@@ -59,7 +59,7 @@ class Paysbuy
     end
 
     {status: status, response: prepare_response_for_serialize(ws_return)}
-  rescue Net::ReadTimeout, Errno::ECONNRESET, Errno::ETIMEDOUT
+  rescue
     raise Paysbuy::HttpError
   end
 
