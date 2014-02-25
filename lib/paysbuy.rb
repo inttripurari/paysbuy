@@ -70,7 +70,7 @@ class Paysbuy
   end
 
   def pay_client
-    @pay_client ||= Savon.client(wsdl: "https://demo.paysbuy.com/api_paynow/api_paynow.asmx?wsdl")
+    @pay_client ||= Savon.client("https://demo.paysbuy.com/api_paynow/api_paynow.asmx?wsdl")
   end
 
   def api_required_options
