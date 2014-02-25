@@ -43,7 +43,8 @@ class Paysbuy
   end
 
   def pay_now(options)
-    response = client.request(:api_paynow_authentication_new) do
+    # pay_client 
+    response = pay_client.request(:api_paynow_authentication_new) do
       soap.body = api_required_options.merge(options)
     end
 
@@ -66,6 +67,10 @@ class Paysbuy
 
   def client
     @client ||= Savon.client("http://www.paysbuy.com/psb_ws/getTransaction.asmx?WSDL")
+  end
+
+  def pay_client
+    @pay_client ||= Savon.client(wsdl: "https://demo.paysbuy.com/api_paynow/api_paynow.asmx?wsdl")
   end
 
   def api_required_options
