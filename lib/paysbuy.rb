@@ -42,6 +42,26 @@ class Paysbuy
     raise Paysbuy::HttpError
   end
 
+  def pay_now(options)
+    response = client.request(:api_paynow_authentication_new) do
+      soap.body = api_required_options.merge(options)
+    end
+
+  #   ws_return = response.body[:get_transaction_by_invoice_response][:get_transaction_by_invoice_result][:get_transaction_by_invoice_return]
+  #   result_code = ws_return[:result]
+  #   amount = ws_return[:amt]
+
+  #   status = if EXTERNAL_CODES[result_code]
+  #     EXTERNAL_CODES[result_code]
+  #   else
+  #     :invalid
+  #   end
+
+  #   {status: status, amount: amount.to_d, response: prepare_response_for_serialize(ws_return)}
+  # rescue Net::ReadTimeout, Errno::ECONNRESET, Errno::ETIMEDOUT
+  #   raise Paysbuy::HttpError
+  end
+
   private
 
   def client
