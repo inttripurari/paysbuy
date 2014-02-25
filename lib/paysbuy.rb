@@ -48,17 +48,17 @@ class Paysbuy
       soap.body = api_required_options.merge(options)
     end
 
-    ws_return = response.body[:api_paynow_authentication_new_response][:api_paynow_authentication_new_result]
-    result_code = ws_return[:result]
-    amount = ws_return[:amt]
+    # ws_return = response.body[:api_paynow_authentication_new_response][:api_paynow_authentication_new_result]
+    # result_code = ws_return[:result]
+    # amount = ws_return[:amt]
 
-    status = if EXTERNAL_CODES[result_code]
-      EXTERNAL_CODES[result_code]
-    else
-      :invalid
-    end
+    # status = if EXTERNAL_CODES[result_code]
+    #   EXTERNAL_CODES[result_code]
+    # else
+    #   :invalid
+    # end
 
-    {status: status, response: prepare_response_for_serialize(ws_return)}
+    # {status: status, response: prepare_response_for_serialize(ws_return)}
   # rescue
   #   raise Paysbuy::HttpError
   end
